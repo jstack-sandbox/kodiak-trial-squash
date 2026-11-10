@@ -1,0 +1,18 @@
+# Draft of SideQuesst/fundflow-v2's .kodiak.toml. It moves to the repo's root
+# in the PR that retires .github/mergify.yml, once Kodiak runs.
+version = 1
+
+[merge]
+# Mergify squashes here; the ruleset allows merge, squash and rebase.
+method = "squash"
+# Approval queues a pull request, as Mergify's auto_merge_conditions did.
+# Kodiak merges only what the main ruleset already lets through: one approval,
+# code owner review and gates 01 to 11.
+require_automerge_label = false
+# Spikes stay open with "DO NOT MERGE" in their titles (#1069, #1070).
+blocking_title_regex = "^(WIP:|DO NOT MERGE)"
+
+[merge.message]
+# Today's squash commits are GitHub's default: "<title> (#n)" and the commit list.
+title = "github_default"
+body = "github_default"
